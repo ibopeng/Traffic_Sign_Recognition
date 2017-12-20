@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-#main file for traffic sign classification
+#main file for Belgian traffic sign classification
 
 from IPython import get_ipython
 get_ipython().magic('reset -sf') 
