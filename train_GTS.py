@@ -9,6 +9,9 @@ from skimage import transform
 from sklearn import preprocessing
 from sklearn.utils import shuffle
 
+# this script is used specifically for German traffic sign recognition
+
+# data loading function "readTrainData" is copied from the website(http://benchmark.ini.rub.de/?section=gtsrb&subsection=dataset) where the data is published.
 # function for reading the images
 # arguments: path to the traffic sign data, for example './GTSRB/Training'
 # returns: list of images, list of corresponding labels 
@@ -32,6 +35,7 @@ def readTrainData(rootpath):
         gtFile.close()
     return images, labels
 
+# this self developed function is to read testing data
 def readTestData(csv_dir):
     images = []
     labels = []
@@ -269,7 +273,7 @@ with graph.as_default():
                         use_relu=False)    
     
     #prediction
-#    y_pred = tf.nn.softmax(layer_fc2, name='y_pred')
+#    y_pred = tf.nn.softmax(layer_fc2, name='y_pred') # sparse softmax is used in next step, so here we do NOT need to use softmax
     
     #define loss, optimizer
     cross_entropy = tf.nn.sparse_softmax_cross_entropy_with_logits(labels = y_true,
